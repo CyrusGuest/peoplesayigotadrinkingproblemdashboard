@@ -2,9 +2,6 @@ import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 import PageMeta from "../../components/common/PageMeta";
 import { useRole } from "../../hooks/useRole";
 import RoleBasedContent from "../../components/common/RoleBasedContent";
-import ProtectedRoute from "../../components/auth/ProtectedRoute";
-import AdminOnlyRoute from "../../components/auth/AdminOnlyRoute";
-import CreatorOnlyRoute from "../../components/auth/CreatorOnlyRoute";
 
 export default function RoleDemo() {
   const { user, isAdmin, isCreator, isAuthenticated } = useRole();

@@ -1,6 +1,6 @@
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 import PageMeta from "../../components/common/PageMeta";
-import { useAuth } from "../../context/AuthContext";
+// import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
 import { apiService, Deliverable } from "../../services/api";
 
@@ -11,7 +11,7 @@ const platforms = [
 ];
 
 export default function MyDeliverables() {
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const [deliverables, setDeliverables] = useState<Deliverable[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "../../icons";
 import Label from "../form/Label";
 import Input from "../form/input/InputField";
@@ -18,7 +18,6 @@ export default function SignUpForm() {
   const [showVerification, setShowVerification] = useState(false);
   
   const { signup, error, clearError } = useAuth();
-  const navigate = useNavigate();
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;

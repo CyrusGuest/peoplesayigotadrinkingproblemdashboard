@@ -22,6 +22,7 @@ export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  console.log(isMobile);
 
   useEffect(() => {
     const handleResize = () => {

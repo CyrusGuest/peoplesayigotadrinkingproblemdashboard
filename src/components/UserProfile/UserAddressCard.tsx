@@ -9,11 +9,11 @@ export default function UserAddressCard() {
   const { isOpen, openModal, closeModal } = useModal();
   const { user } = useAuth();
   
-  const handleSave = () => {
-    // Handle save logic here
-    console.log("Saving changes...");
-    closeModal();
-  };
+  // const handleSave = () => {
+  //   // Handle save logic here
+  //   console.log("Saving changes...");
+  //   closeModal();
+  // };
 
   if (!user) {
     return <div>Loading...</div>;

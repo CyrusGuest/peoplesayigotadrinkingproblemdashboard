@@ -3,11 +3,9 @@ import { Link, useLocation } from "react-router";
 
 // Icons
 import {
-  BoxCubeIcon,
   ChevronDownIcon,
   GridIcon,
   HorizontaLDots,
-  PieChartIcon,
   PlugInIcon,
   TableIcon,
   UserCircleIcon,

@@ -1,9 +1,9 @@
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 import PageMeta from "../../components/common/PageMeta";
-import { useAuth } from "../../context/AuthContext";
+// import { useAuth } from "../../context/AuthContext";
 
 export default function Earnings() {
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
   return (
     <>
