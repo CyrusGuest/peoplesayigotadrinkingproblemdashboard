@@ -6,8 +6,8 @@ export default function SignIn() {
   return (
     <>
       <PageMeta
-        title="Sousa Creator Management"
-        description="Sousa Creator Management"
+        title="Frontline"
+        description="Frontline"
       />
       <AuthLayout>
         <SignInForm />

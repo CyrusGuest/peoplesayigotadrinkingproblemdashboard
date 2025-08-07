@@ -17,16 +17,14 @@ export default function RadioButtons() {
           value="option1"
           checked={selectedValue === "option1"}
           onChange={handleRadioChange}
-          label="Default"
-        />
+          label="Default"        />
         <Radio
           id="radio2"
           name="group1"
           value="option2"
           checked={selectedValue === "option2"}
           onChange={handleRadioChange}
-          label="Selected"
-        />
+          label="Selected"        />
         <Radio
           id="radio3"
           name="group1"
@@ -34,8 +32,7 @@ export default function RadioButtons() {
           checked={selectedValue === "option3"}
           onChange={handleRadioChange}
           label="Disabled"
-          disabled={true}
-        />
+          disabled={true}        />
       </div>
     </ComponentCard>
   );

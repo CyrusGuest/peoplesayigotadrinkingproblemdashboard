@@ -9,8 +9,8 @@ export default function RoleDemo() {
   return (
     <>
       <PageMeta
-        title="Role-Based Access Demo | Influencer Management"
-        description="Demo page showing role-based access control features"
+        title="Role-Based Access Demo | Frontline"
+        description="Demo page showing role-based access control"
       />
       <PageBreadcrumb pageTitle="Role-Based Access Demo" />
       
@@ -56,8 +56,7 @@ export default function RoleDemo() {
             </p>
             
             <RoleBasedContent
-              adminContent={
-                <div className="rounded-lg bg-blue-50 p-4 dark:bg-blue-900/20">
+              adminContent={                <div className="rounded-lg bg-blue-50 p-4 dark:bg-blue-900/20">
                   <p className="text-sm font-medium text-blue-800 dark:text-blue-200">
                     🔐 Admin Content: You can see this because you're an admin!
                   </p>
@@ -186,8 +185,7 @@ export default function RoleDemo() {
             </p>
             
             <RoleBasedContent
-              adminContent={
-                <div className="rounded-lg bg-blue-50 p-4 dark:bg-blue-900/20">
+              adminContent={                <div className="rounded-lg bg-blue-50 p-4 dark:bg-blue-900/20">
                   <p className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-2">
                     🧭 Your Admin Navigation Includes:
                   </p>

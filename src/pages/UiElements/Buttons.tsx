@@ -9,8 +9,7 @@ export default function Buttons() {
     <div>
       <PageMeta
         title="React.js Buttons Dashboard | TailAdmin - React.js Admin Dashboard Template"
-        description="This is React.js Buttons Dashboard page for TailAdmin - React.js Tailwind CSS Admin Dashboard Template"
-      />
+        description="This is React.js Buttons Dashboard page for TailAdmin - React.js Tailwind CSS Admin Dashboard Template"      />
       <PageBreadcrumb pageTitle="Buttons" />
       <div className="space-y-5 sm:space-y-6">
         {/* Primary Button */}
@@ -29,15 +28,13 @@ export default function Buttons() {
           <div className="flex items-center gap-5">
             <Button
               size="sm"
-              variant="primary"
-              startIcon={<BoxIcon className="size-5" />}
+              variant="primary"              startIcon={<BoxIcon className="size-5" />}
             >
               Button Text
             </Button>
             <Button
               size="md"
-              variant="primary"
-              startIcon={<BoxIcon className="size-5" />}
+              variant="primary"              startIcon={<BoxIcon className="size-5" />}
             >
               Button Text
             </Button>
@@ -48,15 +45,13 @@ export default function Buttons() {
           <div className="flex items-center gap-5">
             <Button
               size="sm"
-              variant="primary"
-              endIcon={<BoxIcon className="size-5" />}
+              variant="primary"              endIcon={<BoxIcon className="size-5" />}
             >
               Button Text
             </Button>
             <Button
               size="md"
-              variant="primary"
-              endIcon={<BoxIcon className="size-5" />}
+              variant="primary"              endIcon={<BoxIcon className="size-5" />}
             >
               Button Text
             </Button>
@@ -79,15 +74,13 @@ export default function Buttons() {
           <div className="flex items-center gap-5">
             <Button
               size="sm"
-              variant="outline"
-              startIcon={<BoxIcon className="size-5" />}
+              variant="outline"              startIcon={<BoxIcon className="size-5" />}
             >
               Button Text
             </Button>
             <Button
               size="md"
-              variant="outline"
-              startIcon={<BoxIcon className="size-5" />}
+              variant="outline"              startIcon={<BoxIcon className="size-5" />}
             >
               Button Text
             </Button>
@@ -98,15 +91,13 @@ export default function Buttons() {
           <div className="flex items-center gap-5">
             <Button
               size="sm"
-              variant="outline"
-              endIcon={<BoxIcon className="size-5" />}
+              variant="outline"              endIcon={<BoxIcon className="size-5" />}
             >
               Button Text
             </Button>
             <Button
               size="md"
-              variant="outline"
-              endIcon={<BoxIcon className="size-5" />}
+              variant="outline"              endIcon={<BoxIcon className="size-5" />}
             >
               Button Text
             </Button>

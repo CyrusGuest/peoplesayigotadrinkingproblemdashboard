@@ -73,8 +73,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         setError(response.error || 'Login failed');
         return false;
       }
-    } catch (err: any) {
-      setError(err.message || 'Login failed');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Login failed';
+      setError(errorMessage);
       return false;
     } finally {
       setLoading(false);
@@ -95,8 +96,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         setError(response.error || 'Signup failed');
         return false;
       }
-    } catch (err: any) {
-      setError(err.message || 'Signup failed');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Signup failed';
+      setError(errorMessage);
       return false;
     } finally {
       setLoading(false);
@@ -119,8 +121,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         setError(response.error || 'Password update failed');
         return false;
       }
-    } catch (err: any) {
-      setError(err.message || 'Password update failed');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Password update failed';
+      setError(errorMessage);
       return false;
     } finally {
       setLoading(false);
@@ -143,8 +146,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         setError(response.error || 'Email verification failed');
         return false;
       }
-    } catch (err: any) {
-      setError(err.message || 'Email verification failed');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Email verification failed';
+      setError(errorMessage);
       return false;
     } finally {
       setLoading(false);
@@ -165,8 +169,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         setError(response.error || 'Failed to resend code');
         return false;
       }
-    } catch (err: any) {
-      setError(err.message || 'Failed to resend code');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to resend code';
+      setError(errorMessage);
       return false;
     } finally {
       setLoading(false);

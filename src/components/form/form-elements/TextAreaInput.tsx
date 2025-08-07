@@ -13,8 +13,7 @@ export default function TextAreaInput() {
         <div>
           <Label>Description</Label>
           <TextArea
-            value={message}
-            onChange={(value) => setMessage(value)}
+            value={message}            onChange={(value) => setMessage(value)}
             rows={6}
           />
         </div>
@@ -31,8 +30,7 @@ export default function TextAreaInput() {
           <TextArea
             rows={6}
             value={messageTwo}
-            error
-            onChange={(value) => setMessageTwo(value)}
+            error            onChange={(value) => setMessageTwo(value)}
             hint="Please enter a valid message."
           />
         </div>

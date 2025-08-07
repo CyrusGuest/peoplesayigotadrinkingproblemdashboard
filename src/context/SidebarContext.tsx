@@ -35,7 +35,6 @@ export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({
 
     handleResize();
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("resize", handleResize);
     };

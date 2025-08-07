@@ -4,8 +4,7 @@ import RoleBasedRoute from "../../components/auth/RoleBasedRoute";
 
 export default function RoleBasedHome() {
   return (
-    <RoleBasedRoute
-      adminComponent={<AdminDashboard />}
+    <RoleBasedRoute      adminComponent={<AdminDashboard />}
       creatorComponent={<CreatorDashboard />}
     />
   );

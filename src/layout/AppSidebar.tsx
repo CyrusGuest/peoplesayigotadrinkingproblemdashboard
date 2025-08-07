@@ -6,12 +6,19 @@ import {
   ChevronDownIcon,
   GridIcon,
   HorizontaLDots,
-  PlugInIcon,
-  TableIcon,
   UserCircleIcon,
+  ChatIcon,
+  DollarLineIcon,
+  TaskIcon,
+  GroupIcon,
+  PieChartIcon,
+  PageIcon,
+  CalenderIcon,
+  PlugInIcon,
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";
 import { useAuth } from "../context/AuthContext";
+import BackgroundProcessWidget from "../components/BackgroundProcessWidget";
 
 type NavItem = {
   name: string;
@@ -27,12 +34,11 @@ const AppSidebar: React.FC = () => {
 
   const [openSubmenu, setOpenSubmenu] = useState<{
     type: "main" | "others";
-    index: number;
-  } | null>(null);
+    index: number;  } | null>(null);
   const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>({});
   const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
-  // Filter navigation items based on user role
+  // Filter navigation items based on user role - HIGH PRIORITY PAGES FIRST
   const getNavItems = (): NavItem[] => {
     const baseItems: NavItem[] = [
       {
@@ -40,18 +46,67 @@ const AppSidebar: React.FC = () => {
         name: "Dashboard",
         path: "/",
       },
-      {
-        icon: <UserCircleIcon />,
-        name: "Profile",
-        path: "/profile",
-      },
     ];
 
-    // Admin-specific items
+    // Admin-specific items - HIGH PRIORITY
     if (user?.role === 'admin') {
       baseItems.push(
-        { name: 'Creators', icon: <TableIcon />, path: '/creators' },
-        { name: 'Deliverables', icon: <TableIcon />, path: '/deliverables' }
+        { 
+          name: 'Creators', 
+          icon: <GroupIcon />, 
+          path: '/creators' 
+        },
+        {
+          name: 'KOL Calendar',
+          icon: <CalenderIcon />,
+          path: '/kol-calendar'
+        },
+        { 
+          name: 'Deliverables', 
+          icon: <TaskIcon />, 
+          path: '/deliverables' 
+        },
+        { 
+          name: 'Payment Management', 
+          icon: <DollarLineIcon />, 
+          path: '/payment-management' 
+        },
+        {
+          name: 'Admin Tools',
+          icon: <PlugInIcon />,
+          path: '/admin-tools'
+        },
+        {
+          name: 'Reports',
+          icon: <PieChartIcon />,
+          path: '/unified-reports'
+        },
+        { 
+          name: 'User Management', 
+          icon: <UserCircleIcon />, 
+          path: '/user-management' 
+        }
+      );
+    }
+
+    // Creator-specific items - HIGH PRIORITY
+    if (user?.role === 'creator') {
+      baseItems.push(
+        { 
+          name: 'Get Paid', 
+          icon: <DollarLineIcon />, 
+          path: '/payment-requests' 
+        },
+        { 
+          name: 'My Content', 
+          icon: <TaskIcon />, 
+          path: '/my-deliverables' 
+        },
+        { 
+          name: 'My Earnings', 
+          icon: <PieChartIcon />, 
+          path: '/earnings' 
+        }
       );
     }
 
@@ -60,15 +115,31 @@ const AppSidebar: React.FC = () => {
 
   const getOthersItems = (): NavItem[] => {
     const baseItems: NavItem[] = [
-      // Removed UI Elements and Analytics items
+      {
+        icon: <UserCircleIcon />,
+        name: "Profile",
+        path: "/profile",
+      },
+      {
+        icon: <ChatIcon />,
+        name: "Chat",
+        path: "/chat",
+      },
+      {
+        icon: <CalenderIcon />,
+        name: "Calendar",
+        path: "/calendar",
+      },
     ];
 
-    // Admin-specific items
+    // Admin-specific additional items
     if (user?.role === 'admin') {
       baseItems.push(
-        { name: 'User Management', icon: <PlugInIcon />, path: '/admin/users' },
-        { name: 'System Settings', icon: <PlugInIcon />, path: '/admin/settings' },
-        { name: 'Reports', icon: <PlugInIcon />, path: '/admin/reports' }
+        { 
+          name: 'Creator Detail', 
+          icon: <PageIcon />, 
+          path: '/creator/1' // This would be dynamic in real app
+        }
       );
     }
 
@@ -139,53 +210,43 @@ const AppSidebar: React.FC = () => {
       {items.map((nav, index) => (
         <li key={nav.name}>
           {nav.subItems ? (
-            <button
-              onClick={() => handleSubmenuToggle(index, menuType)}
-              className={`menu-item group ${
+            <button              onClick={() => handleSubmenuToggle(index, menuType)}              className={`menu-item group ${
                 openSubmenu?.type === menuType && openSubmenu?.index === index
                   ? "menu-item-active"
                   : "menu-item-inactive"
               } cursor-pointer`}
             >
-              <span
-                className={`menu-item-icon-size ${
+              <span                className={`menu-item-icon-size ${
                   openSubmenu?.type === menuType && openSubmenu?.index === index
                     ? "menu-item-icon-active"
                     : "menu-item-icon-inactive"
-                }`}
-              >
+                }`}              >
                 {nav.icon}
               </span>
               {isExpanded && (
                 <span className="menu-item-text">{nav.name}</span>
               )}
               {isExpanded && (
-                <ChevronDownIcon
-                  className={`ml-auto w-5 h-5 transition-transform duration-200 ${
+                <ChevronDownIcon                  className={`ml-auto w-5 h-5 transition-transform duration-200 ${
                     openSubmenu?.type === menuType &&
                     openSubmenu?.index === index
                       ? "rotate-180 text-brand-500"
                       : ""
-                  }`}
-                />
+                  }`}                />
               )}
             </button>
           ) : (
             nav.path && (
               <Link
-                to={nav.path}
-                className={`menu-item group ${
+                to={nav.path}                className={`menu-item group ${
                   isActive(nav.path) ? "menu-item-active" : "menu-item-inactive"
                 }`}
-                onClick={closeMobileSidebar}
-              >
-                <span
-                  className={`menu-item-icon-size ${
+                onClick={closeMobileSidebar}              >
+                <span                  className={`menu-item-icon-size ${
                     isActive(nav.path)
                       ? "menu-item-icon-active"
                       : "menu-item-icon-inactive"
-                  }`}
-                >
+                  }`}                >
                   {nav.icon}
                 </span>
                 {isExpanded && (
@@ -195,15 +256,12 @@ const AppSidebar: React.FC = () => {
             )
           )}
           {nav.subItems && isExpanded && (
-            <div
-              ref={(el) => {
-                subMenuRefs.current[`${menuType}-${index}`] = el;
+            <div              ref={(el) => {                subMenuRefs.current[`${menuType}-${index}`] = el;
               }}
               className="overflow-hidden transition-all duration-300"
               style={{
                 height:
-                  openSubmenu?.type === menuType && openSubmenu?.index === index
-                    ? `${subMenuHeight[`${menuType}-${index}`]}px`
+                  openSubmenu?.type === menuType && openSubmenu?.index === index                    ? `${subMenuHeight[`${menuType}-${index}`]}px`
                     : "0px",
               }}
             >
@@ -211,35 +269,29 @@ const AppSidebar: React.FC = () => {
                 {nav.subItems.map((subItem) => (
                   <li key={subItem.name}>
                     <Link
-                      to={subItem.path}
-                      className={`menu-dropdown-item ${
+                      to={subItem.path}                      className={`menu-dropdown-item ${
                         isActive(subItem.path)
                           ? "menu-dropdown-item-active"
                           : "menu-dropdown-item-inactive"
                       }`}
-                      onClick={closeMobileSidebar}
-                    >
+                      onClick={closeMobileSidebar}                    >
                       {subItem.name}
                       <span className="flex items-center gap-1 ml-auto">
                         {subItem.new && (
-                          <span
-                            className={`ml-auto ${
+                          <span                            className={`ml-auto ${
                               isActive(subItem.path)
                                 ? "menu-dropdown-badge-active"
                                 : "menu-dropdown-badge-inactive"
-                            } menu-dropdown-badge`}
-                          >
+                            } menu-dropdown-badge`}                          >
                             new
                           </span>
                         )}
                         {subItem.pro && (
-                          <span
-                            className={`ml-auto ${
+                          <span                            className={`ml-auto ${
                               isActive(subItem.path)
                                 ? "menu-dropdown-badge-active"
                                 : "menu-dropdown-badge-inactive"
-                            } menu-dropdown-badge`}
-                          >
+                            } menu-dropdown-badge`}                          >
                             pro
                           </span>
                         )}
@@ -262,11 +314,9 @@ const AppSidebar: React.FC = () => {
   return (
     <>
       {/* Sidebar */}
-      <aside
-        className={`fixed h-screen left-0 top-0 z-40 w-64 transform border-r border-gray-200 bg-white transition-transform duration-300 ease-in-out dark:border-gray-800 dark:bg-gray-dark lg:translate-x-0 ${
+      <aside        className={`fixed h-screen left-0 top-0 z-40 w-64 transform border-r border-gray-200 bg-white transition-transform duration-300 ease-in-out dark:border-gray-800 dark:bg-gray-dark lg:translate-x-0 ${
           isMobileOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:fixed lg:translate-x-0`}
-      >
+        } lg:fixed lg:translate-x-0`}      >
         <div className="flex h-full flex-col">
           {/* Logo */}
           <div className="flex h-16 items-center justify-between border-b border-gray-200 px-4 dark:border-gray-800">
@@ -274,8 +324,7 @@ const AppSidebar: React.FC = () => {
               to="/"
               className="flex items-center gap-2 text-xl font-bold text-gray-800 dark:text-white/90"
             >
-              <span className="text-2xl">🎯</span>
-              {isExpanded && <span>InfluencerHub</span>}
+              {isExpanded && <span className="p-2">Frontline</span>}
             </Link>
             <button
               onClick={closeMobileSidebar}
@@ -294,42 +343,11 @@ const AppSidebar: React.FC = () => {
                   {isExpanded && "Main Menu"}
                 </h3>
                 {renderMenuItems(navItems, "main")}
-                {/* Creator Tools Heading and Links */}
-                {user?.role === 'creator' && (
-                  <>
-                    <h3 className="mt-8 mb-4 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                      {isExpanded && "Creator Tools"}
-                    </h3>
-                    <ul className="flex flex-col gap-4">
-                      <li>
-                        <Link to="/my-deliverables" className={`menu-item group ${isActive('/my-deliverables') ? 'menu-item-active' : 'menu-item-inactive'}`}
-                          onClick={closeMobileSidebar}>
-                          <span className={`menu-item-icon-size ${isActive('/my-deliverables') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'}`}>
-                            <TableIcon />
-                          </span>
-                          {isExpanded && <span className="menu-item-text">My Deliverables</span>}
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/earnings" className={`menu-item group ${isActive('/earnings') ? 'menu-item-active' : 'menu-item-inactive'}`}
-                          onClick={closeMobileSidebar}>
-                          <span className={`menu-item-icon-size ${isActive('/earnings') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'}`}>
-                            <TableIcon />
-                          </span>
-                          {isExpanded && <span className="menu-item-text">Earnings</span>}
-                        </Link>
-                      </li>
-                    </ul>
-                  </>
-                )}
               </div>
 
-              {/* Other Navigation */}
-              <div>
-                <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                  {isExpanded && "Other"}
-                </h3>
-                {renderMenuItems(othersItems, "others")}
+              {/* Background Processes */}
+              <div className="mt-auto">
+                <BackgroundProcessWidget />
               </div>
             </div>
           </nav>

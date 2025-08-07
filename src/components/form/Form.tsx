@@ -8,8 +8,7 @@ interface FormProps {
 
 const Form: FC<FormProps> = ({ onSubmit, children, className }) => {
   return (
-    <form
-      onSubmit={(event) => {
+    <form      onSubmit={(event) => {
         event.preventDefault(); // Prevent default form submission
         onSubmit(event);
       }}

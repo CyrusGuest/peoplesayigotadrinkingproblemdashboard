@@ -29,46 +29,46 @@ export default function UserAddressCard() {
 
   return (
     <>
-      <div className="p-5 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6">
+      <div className="p-5 border border-gray-200 rounded-2xl lg:p-6">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div>
-            <h4 className="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">
+            <h4 className="text-lg font-semibold text-gray-800 lg:mb-6">
               Creator Statistics
             </h4>
 
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 2xl:gap-x-32">
               <div>
-                <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                <p className="mb-2 text-xs leading-normal text-gray-500">
                   Total Deliverables
                 </p>
-                <p className="text-sm font-medium text-gray-800 dark:text-white/90">
+                <p className="text-sm font-medium text-gray-800">
                   {creatorStats.totalDeliverables}
                 </p>
               </div>
 
               <div>
-                <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                <p className="mb-2 text-xs leading-normal text-gray-500">
                   Total Earnings
                 </p>
-                <p className="text-sm font-medium text-gray-800 dark:text-white/90">
+                <p className="text-sm font-medium text-gray-800">
                   ${creatorStats.totalEarnings.toLocaleString()}
                 </p>
               </div>
 
               <div>
-                <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                <p className="mb-2 text-xs leading-normal text-gray-500">
                   Average Views
                 </p>
-                <p className="text-sm font-medium text-gray-800 dark:text-white/90">
+                <p className="text-sm font-medium text-gray-800">
                   {creatorStats.averageViews.toLocaleString()}
                 </p>
               </div>
 
               <div>
-                <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                <p className="mb-2 text-xs leading-normal text-gray-500">
                   Platforms
                 </p>
-                <p className="text-sm font-medium text-gray-800 dark:text-white/90">
+                <p className="text-sm font-medium text-gray-800">
                   {creatorStats.platforms.join(', ')}
                 </p>
               </div>
@@ -77,7 +77,7 @@ export default function UserAddressCard() {
 
           <button
             onClick={openModal}
-            className="flex w-full items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200 lg:inline-flex lg:w-auto"
+            className="flex w-full items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 lg:inline-flex lg:w-auto"
           >
             <svg
               className="fill-current"
@@ -98,13 +98,13 @@ export default function UserAddressCard() {
           </button>
         </div>
       </div>
-      <Modal isOpen={isOpen} onClose={closeModal} className="max-w-[700px] m-4">
-        <div className="relative w-full p-4 overflow-y-auto bg-white no-scrollbar rounded-3xl dark:bg-gray-900 lg:p-11">
+      <Modal isOpen={isOpen} onClose={closeModal}>
+        <div className="p-8 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 max-w-[700px] mx-4 max-h-[90vh] overflow-y-auto">
           <div className="px-2 pr-14">
-            <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
+            <h4 className="mb-2 text-2xl font-semibold text-gray-800">
               Creator Statistics Details
             </h4>
-            <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
+            <p className="mb-6 text-sm text-gray-500 lg:mb-7">
               View detailed statistics and performance metrics.
             </p>
           </div>
@@ -131,8 +131,8 @@ export default function UserAddressCard() {
               </div>
             </div>
             
-            <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+              <p className="text-sm text-gray-600">
                 <strong>Note:</strong> These statistics will be populated as you create deliverables and track performance. 
                 Currently showing placeholder data.
               </p>

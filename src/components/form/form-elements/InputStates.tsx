@@ -28,8 +28,7 @@ export default function InputStates() {
   return (
     <ComponentCard
       title="Input States"
-      desc="Validation styles for error, success and disabled states on form controls."
-    >
+      desc="Validation styles for error, success and disabled states on form controls."    >
       <div className="space-y-5 sm:space-y-6">
         {/* Error Input */}
         <div>
@@ -40,8 +39,7 @@ export default function InputStates() {
             error={error}
             onChange={handleEmailChange}
             placeholder="Enter your email"
-            hint={error ? "This is an invalid email address." : ""}
-          />
+            hint={error ? "This is an invalid email address." : ""}          />
         </div>
 
         {/* Success Input */}
@@ -53,8 +51,7 @@ export default function InputStates() {
             success={!error}
             onChange={handleEmailTwoChange}
             placeholder="Enter your email"
-            hint={!error ? "This is an success message." : ""}
-          />
+            hint={!error ? "This is an success message." : ""}          />
         </div>
 
         {/* Disabled Input */}
@@ -64,8 +61,7 @@ export default function InputStates() {
             type="text"
             value="disabled@example.com"
             disabled={true}
-            placeholder="Disabled email"
-          />
+            placeholder="Disabled email"          />
         </div>
       </div>
     </ComponentCard>

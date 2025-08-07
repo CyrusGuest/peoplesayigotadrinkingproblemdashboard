@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import SignIn from "./pages/AuthPages/SignIn";
 import SignUp from "./pages/AuthPages/SignUp";
 import NotFound from "./pages/OtherPage/NotFound";
@@ -20,21 +22,46 @@ import { ScrollToTop } from "./components/common/ScrollToTop";
 import RoleBasedHome from "./pages/Dashboard/RoleBasedHome";
 import RoleDemo from "./pages/DemoPages/RoleDemo";
 import { AuthProvider } from "./context/AuthContext";
+import { BackgroundProcessProvider } from "./context/BackgroundProcessContext";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AdminOnlyRoute from "./components/auth/AdminOnlyRoute";
 import CreatorOnlyRoute from "./components/auth/CreatorOnlyRoute";
 import MyDeliverables from "./pages/CreatorPages/MyDeliverables";
 import Earnings from "./pages/CreatorPages/Earnings";
+import CreatorDetail from "./pages/CreatorPages/CreatorDetail";
+import PaymentRequests from "./pages/CreatorPages/PaymentRequests";
+import PaymentManagement from "./pages/AdminPages/PaymentManagement";
+import UserManagement from "./pages/AdminPages/UserManagement";
+import DeliverablesManagement from "./pages/AdminPages/DeliverablesManagement";
+import AdminTools from "./pages/AdminPages/AdminTools";
+import Reports from "./pages/AdminPages/Reports";
+import UnifiedReports from "./pages/AdminPages/UnifiedReports";
+import KOLCalendar from "./pages/AdminPages/KOLCalendar";
+import NewKOLCampaign from "./pages/AdminPages/NewKOLCampaign";
+import Chat from "./pages/Chat";
 
 export default function App() {
   return (
     <AuthProvider>
-      <Router>
+      <BackgroundProcessProvider>
+        <Router>
         <ScrollToTop />
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          aria-label="Notifications"
+        />
         <Routes>
           {/* Dashboard Layout - All routes require authentication */}
-          <Route element={
-            <ProtectedRoute>
+          <Route element={            <ProtectedRoute>
               <AppLayout />
             </ProtectedRoute>
           }>
@@ -48,33 +75,73 @@ export default function App() {
             <Route path="/role-demo" element={<RoleDemo />} />
 
             {/* Admin-only routes */}
-            <Route path="/admin" element={
-              <AdminOnlyRoute>
+            <Route path="/admin" element={              <AdminOnlyRoute>
                 <RoleBasedHome />
               </AdminOnlyRoute>
             } />
 
             {/* Creator-only routes */}
-            <Route path="/creator" element={
-              <CreatorOnlyRoute>
+            <Route path="/creator" element={              <CreatorOnlyRoute>
                 <RoleBasedHome />
               </CreatorOnlyRoute>
             } />
-            <Route path="/my-deliverables" element={
-              <CreatorOnlyRoute>
+            <Route path="/my-deliverables" element={              <CreatorOnlyRoute>
                 <MyDeliverables />
               </CreatorOnlyRoute>
             } />
-            <Route path="/earnings" element={
-              <CreatorOnlyRoute>
+            <Route path="/earnings" element={              <CreatorOnlyRoute>
                 <Earnings />
               </CreatorOnlyRoute>
             } />
+            <Route path="/payment-requests" element={              <CreatorOnlyRoute>
+                <PaymentRequests />
+              </CreatorOnlyRoute>
+            } />
+            <Route path="/chat" element={<Chat />} />
 
             {/* Admin-only management routes */}
-            <Route path="/creators" element={
-              <AdminOnlyRoute>
+            <Route path="/creators" element={              <AdminOnlyRoute>
                 <BasicTables />
+              </AdminOnlyRoute>
+            } />
+            <Route path="/creator/:id" element={              <AdminOnlyRoute>
+                <CreatorDetail />
+              </AdminOnlyRoute>
+            } />
+            <Route path="/user/:id" element={              <AdminOnlyRoute>
+                <CreatorDetail />
+              </AdminOnlyRoute>
+            } />
+            <Route path="/payment-management" element={              <AdminOnlyRoute>
+                <PaymentManagement />
+              </AdminOnlyRoute>
+            } />
+            <Route path="/user-management" element={              <AdminOnlyRoute>
+                <UserManagement />
+              </AdminOnlyRoute>
+            } />
+            <Route path="/deliverables" element={              <AdminOnlyRoute>
+                <DeliverablesManagement />
+              </AdminOnlyRoute>
+            } />
+            <Route path="/admin-tools" element={              <AdminOnlyRoute>
+                <AdminTools />
+              </AdminOnlyRoute>
+            } />
+            <Route path="/admin-reports" element={              <AdminOnlyRoute>
+                <Reports />
+              </AdminOnlyRoute>
+            } />
+            <Route path="/unified-reports" element={              <AdminOnlyRoute>
+                <UnifiedReports />
+              </AdminOnlyRoute>
+            } />
+            <Route path="/kol-calendar" element={              <AdminOnlyRoute>
+                <KOLCalendar />
+              </AdminOnlyRoute>
+            } />
+            <Route path="/kol-campaigns/new" element={              <AdminOnlyRoute>
+                <NewKOLCampaign />
               </AdminOnlyRoute>
             } />
 
@@ -102,6 +169,7 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
+      </BackgroundProcessProvider>
     </AuthProvider>
   );
 }

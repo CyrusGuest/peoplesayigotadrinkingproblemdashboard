@@ -23,9 +23,8 @@ export default function InputGroup() {
             <Input
               placeholder="info@gmail.com"
               type="text"
-              className="pl-[62px]"
-            />
-            <span className="absolute left-0 top-1/2 -translate-y-1/2 border-r border-gray-200 px-3.5 py-3 text-gray-500 dark:border-gray-800 dark:text-gray-400">
+              className="pl-[62px]"            />
+            <span className="absolute left-0 top-1/2 -translate-y-1/2 border-r border-gray-200 px-3.5 py-3 text-gray-500">
               <EnvelopeIcon className="size-6" />
             </span>
           </div>
@@ -36,8 +35,7 @@ export default function InputGroup() {
             selectPosition="start"
             countries={countries}
             placeholder="+1 (555) 000-0000"
-            onChange={handlePhoneNumberChange}
-          />
+            onChange={handlePhoneNumberChange}          />
         </div>{" "}
         <div>
           <Label>Phone</Label>
@@ -45,8 +43,7 @@ export default function InputGroup() {
             selectPosition="end"
             countries={countries}
             placeholder="+1 (555) 000-0000"
-            onChange={handlePhoneNumberChange}
-          />
+            onChange={handlePhoneNumberChange}          />
         </div>
       </div>
     </ComponentCard>
